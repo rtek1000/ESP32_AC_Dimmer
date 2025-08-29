@@ -1,3 +1,5 @@
+// ESP32 60Hz dimmer
+
 #define TRIAC_pin 4
 #define ZCD_pin 15
 
@@ -9,6 +11,8 @@ uint32_t millis2 = 0;
 
 volatile uint16_t dimm_buff = 0;
 bool dimm_up = false;
+
+uint8_t dimm_power = 0;
 
 hw_timer_t *timer_10us = NULL;
 
@@ -114,13 +118,12 @@ void setup() {
   Serial.println("Test begin");
 }
 
-uint8_t dimm_power = 0;
-
 void loop() {
   // put your main code here, to run repeatedly:
   if ((millis() - millis2) >= 10) {
     millis2 = millis();
 
+    // dimm_power is the control variable
     if (dimm_up == true) {
       if (dimm_power > 0) { // 0%
         dimm_power--;
