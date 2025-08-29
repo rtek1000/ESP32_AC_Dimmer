@@ -76,7 +76,7 @@ void ARDUINO_ISR_ATTR timer_10us_ISR() {
   portEXIT_CRITICAL_ISR(&timerMux);
 }
 
-void IRAM_ATTR zero_cross_int_ISR() {
+void IRAM_ATTR zero_cross_ext_ISR() {
   portENTER_CRITICAL_ISR(&extIntMux);
   if (digitalRead(ZCD_pin) == LOW) {
     zc_time_us = zc_timer_10us;
@@ -103,7 +103,7 @@ void setup() {
   Serial.begin(115200);  // Initialize the serial communication:
   delay(1000);
 
-  attachInterrupt(ZCD_pin, zero_cross_int_ISR, CHANGE);  // CHANGE FALLING RISING
+  attachInterrupt(ZCD_pin, zero_cross_ext_ISR, CHANGE);  // CHANGE FALLING RISING
 
   timer_10us = timerBegin(100000);
   timerAttachInterrupt(timer_10us, &timer_10us_ISR);
