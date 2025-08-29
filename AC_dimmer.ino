@@ -19,9 +19,6 @@ hw_timer_t *timer_10us = NULL;
 volatile uint32_t zc_timer_10us = 0;
 volatile uint32_t zc_time_us = 0;
 
-hw_timer_t *timer0 = NULL;
-hw_timer_t *timer1 = NULL;
-
 static portMUX_TYPE mutex_int1 = portMUX_INITIALIZER_UNLOCKED;
 static portMUX_TYPE mutex_int2 = portMUX_INITIALIZER_UNLOCKED;
 
