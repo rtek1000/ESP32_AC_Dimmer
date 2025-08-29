@@ -103,6 +103,7 @@ void setup() {
   Serial.begin(115200);  // Initialize the serial communication:
   delay(1000);
 
+  // Note: CHANGE mode resulted in better stability
   attachInterrupt(ZCD_pin, zero_cross_ext_ISR, CHANGE);  // CHANGE FALLING RISING
 
   timer_10us = timerBegin(100000);
