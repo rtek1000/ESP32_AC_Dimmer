@@ -14,16 +14,13 @@ bool dimm_up = false;
 
 uint8_t dimm_power = 0;
 
-hw_timer_t *timer_10us = NULL;
-
 volatile uint32_t zc_timer_10us = 0;
 volatile uint32_t zc_time_us = 0;
 
-static portMUX_TYPE mutex_int1 = portMUX_INITIALIZER_UNLOCKED;
-static portMUX_TYPE mutex_int2 = portMUX_INITIALIZER_UNLOCKED;
-
 volatile uint16_t dimmer_on_timer = 0;
 volatile uint8_t dimmer_off_timer = 0;
+
+hw_timer_t *timer_10us = NULL;
 
 portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
 portMUX_TYPE extIntMux = portMUX_INITIALIZER_UNLOCKED;
